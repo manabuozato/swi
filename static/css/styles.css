@@ -1,0 +1,65 @@
+.video-item {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.video-left {
+    flex: 0 0 320px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-right {
+    flex: 1;
+}
+
+.video-filename {
+    margin-bottom: 10px;
+    word-break: break-all;
+}
+
+.video-thumbnail,
+.video-preview {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.video-preview {
+    display: none;
+}
+
+.video-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.video-controls button {
+    flex: 0 0 48%;
+}
+
+.video-info p {
+    margin: 5px 0;
+}
+
+.progress {
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    line-height: 20px;
+    color: white;
+}
+
+#uploadStatus {
+    font-size: 0.9em;
+    color: #666;
+}

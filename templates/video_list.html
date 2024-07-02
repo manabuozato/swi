@@ -1,0 +1,42 @@
+<div id="videoListContainer">
+    <div class="sort-buttons">
+        <button id="sortByUpload" class="btn btn-secondary">アップロード順</button>
+        <button id="sortByCreation" class="btn btn-secondary">作成日順</button>
+        <button id="sortBySize" class="btn btn-secondary">ファイル容量順</button>
+        <button id="sortByDuration" class="btn btn-secondary">動画時間順</button>
+    </div>
+    <div class="file-upload">
+        <input type="file" id="fileInput" accept="video/*" multiple class="form-control mb-3">
+        <button id="uploadButton" class="btn btn-primary">アップロード</button>
+        <button id="resetSessionButton" class="btn btn-warning" onclick="console.log('Button clicked via onclick')">リセット</button>
+        <button id="combineButton" class="btn btn-success">実行する</button>
+        <div id="uploadProgress" class="mt-2" style="display: none;">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p id="uploadStatus" class="mt-1"></p>
+        </div>
+    </div>
+    <div id="videoList">
+        {% for video in videos %}
+        <div class="video-item" data-filename="{{ video }}">
+            <div class="video-left">
+                <p class="video-filename">{{ video }}</p>
+                <img src="/thumbnails/{{ video }}" class="video-thumbnail" alt="{{ video }}">
+                <video src="/uploads/{{ video }}" class="video-preview"></video>
+                <div class="video-controls">
+                    <button class="btn btn-sm btn-info preview-btn" data-filename="{{ video }}">プレビュー</button>
+                    <button class="btn btn-sm btn-danger delete-btn" data-filename="{{ video }}">削除</button>
+                </div>
+            </div>
+            <div class="video-right">
+                <p>長さ: <span class="video-duration"></span></p>
+                <p>サイズ: <span class="video-size"></span> MB</p>
+                <p>解像度: <span class="video-resolution"></span></p>
+                <p class="creation-time"></p>
+                <p class="upload-time"></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

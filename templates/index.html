@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div id="videoList">
+            {% include 'video_list.html' %}
+        </div>
+        <div id="videoPreviewContainer"></div>
+    </div>
+    <div class="col-md-4">
+        {% include 'video_operations.html' %}
+    </div>
+    
+</div>
+<div id="saveStateModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>Save Work State</h2>
+      <input type="text" id="stateNameInput" placeholder="Enter state name">
+      <button id="confirmSaveState">Save</button>
+      <button id="cancelSaveState">Cancel</button>
+    </div>
+</div>
+<div id="textOverlayModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>テキストを追加</h2>
+        <input type="hidden" id="videoFilename">
+        <div class="form-group">
+            <label for="overlayText">テキスト:</label>
+            <input type="text" id="overlayText" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="overlayPosition">位置:</label>
+            <select id="overlayPosition" class="form-control">
+                <option value="top-left">左上</option>
+                <option value="top-center">上中央</option>
+                <option value="top-right">右上</option>
+                <option value="center-left">左中央</option>
+                <option value="center">中央</option>
+                <option value="center-right">右中央</option>
+                <option value="bottom-left">左下</option>
+                <option value="bottom-center">下中央</option>
+                <option value="bottom-right">右下</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="overlayColor">色:</label>
+            <input type="color" id="overlayColor" class="form-control" value="#ffffff">
+        </div>
+        <div class="form-group">
+            <label for="overlayFontSize">フォントサイズ:</label>
+            <input type="number" id="overlayFontSize" class="form-control" value="50" min="10">
+        </div>
+        <div class="form-group">
+            <label for="overlayDurationType">表示時間:</label>
+            <select id="overlayDurationType" class="form-control">
+                <option value="full">動画全体</option>
+                <option value="custom">カスタム (秒)</option>
+            </select>
+            <input type="number" id="overlayDurationSeconds" class="form-control" value="5" min="1">
+        </div>
+        <button id="addOverlayBtn" class="btn btn-primary">オーバーレイを追加</button>
+    </div>
+</div>
+
+<script>
+    document.querySelector('.close').addEventListener('click', function() {
+        document.getElementById('textOverlayModal').style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target == document.getElementById('textOverlayModal')) {
+            document.getElementById('textOverlayModal').style.display = 'none';
+        }
+    });
+</script>
+
+{% endblock %}

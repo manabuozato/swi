@@ -1,0 +1,22 @@
+
+<p>統合後の動画の長さ:  <span id="totalDuration">{{ total_duration|round(2) }}</span></p>
+<p>統合する動画の数: <span id="totalVideos"></span>本</p>
+
+
+<div id="metadataOptions" style="display: none;">
+    結合後の動画の撮影日を選択してください
+    <select id="metadataDateSelect" class="form-select">
+        <option value="earliest">最も古い日付</option>
+        <option value="latest">最も新しい日付</option>
+        <option value="custom">カスタム（動画を選択）</option>
+        <option value="current">現在の時刻</option>
+    </select>
+    <div id="customDateSelect" style="display: none;">
+        <select id="customVideoSelect" class="form-select mt-2">
+            <!-- 動画のリストがここに動的に追加されます -->
+        </select>
+    </div>
+</div>
+{% include 'audio_processing_options.html' %}
+{% include 'video_split_options.html' %}
+{% include 'text_overlay_options.html' %}
